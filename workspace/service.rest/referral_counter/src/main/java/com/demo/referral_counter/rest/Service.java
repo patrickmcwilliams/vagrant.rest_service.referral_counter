@@ -18,7 +18,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 import com.demo.referral_counter.db.Referrer;
 import com.demo.referral_counter.db.ReferrerRepository;
-import static java.lang.Math.min;
 
 @Component("service")
 public class Service {
