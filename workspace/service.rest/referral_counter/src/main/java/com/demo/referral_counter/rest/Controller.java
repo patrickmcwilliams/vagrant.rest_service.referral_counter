@@ -1,6 +1,8 @@
 package com.demo.referral_counter.rest;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,10 +28,23 @@ public class Controller {
     }
     
     @RequestMapping(value="/counter/get")
-    public List<Referrer> counterGet(@RequestParam(value="url", defaultValue="none") String url,
-    						@RequestParam(value="clientid", defaultValue="0") String clientId) {
-        
-    	return service.getRecords();
+    public List<?> counterGet(@RequestParam(value="action", defaultValue="count") String action,
+    									@RequestParam(value="url", defaultValue="none") String url,
+    									@RequestParam(value="clientid", defaultValue="none") String clientId) {
+		Map<String, String> data = new HashMap<>();
+		data.put("url", url);
+		data.put("clientId", clientId);
+    	switch(action){	
+    		case "list":
+    			return service.listRecords(data);
+    		case "count":
+    			return service.countRecords(data);
+    		case "topThree":
+    			data.put("queryType", "topThree");
+    			return service.listRecords(data);	
+    	}
+
+    	return null;
     }
 	
 }

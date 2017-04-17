@@ -8,6 +8,7 @@ public class Referrer {
 
     public String url;
     public String clientId;
+    public String total;
 
     public Referrer() {}
     

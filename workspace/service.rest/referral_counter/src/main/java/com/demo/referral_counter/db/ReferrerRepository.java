@@ -5,8 +5,9 @@ import com.demo.referral_counter.db.Referrer;
 
 public interface ReferrerRepository extends MongoRepository<Referrer, String>{
 
-    public Referrer findByUrl(String url);
+    public List<Referrer> findByUrl(String url);
     public List<Referrer> findByClientId(String clientId);
+    public List<Referrer> findByUrlAndClientId(String url, String clientId);
 	
 }
 
