@@ -1,4 +1,4 @@
-package com.demo.rest.referral_counter;
+package com.demo.referral_counter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

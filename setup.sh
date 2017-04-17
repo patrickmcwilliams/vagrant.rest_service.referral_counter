@@ -17,4 +17,6 @@ sudo yum -y install apache-maven
 #set default java
 sudo ln -sf /usr/java/jdk1.8.0_112/bin/java /usr/bin/java
 sudo sh -c 'echo "export JAVA_HOME=/usr/java/jdk1.8.0_112/" >> /etc/profile'
-sudo sh -c 'echo ". /vagrant/startup.sh" >> /etc/profile'
+
+
+sudo sh -c 'echo ". /vagrant/startup.sh" >> /home/vagrant/.bash_profile'
