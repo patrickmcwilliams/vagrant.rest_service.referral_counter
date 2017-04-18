@@ -1,4 +1,4 @@
-package com.demo.referral_counter.rest;
+package com.demo.referral_counter.web;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,19 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
-import org.springframework.stereotype.Component;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.group;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.project;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.sort;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.limit;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
+import org.springframework.stereotype.Component;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import com.demo.referral_counter.db.Referrer;
 import com.demo.referral_counter.db.ReferrerRepository;
 
 @Component("service")
-public class Service {
+public class WebService {
 	
 	@Autowired
 	private ReferrerRepository db;

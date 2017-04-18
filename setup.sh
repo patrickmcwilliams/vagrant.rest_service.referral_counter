@@ -18,5 +18,8 @@ sudo yum -y install apache-maven
 sudo ln -sf /usr/java/jdk1.8.0_112/bin/java /usr/bin/java
 sudo sh -c 'echo "export JAVA_HOME=/usr/java/jdk1.8.0_112/" >> /etc/profile'
 
+#setup mongodb
+cp /vagrant/etc/mongodb-org-3.4.repo /etc/yum.repos.d/
+sudo yum install -y mongodb-org
 
 sudo sh -c 'echo ". /vagrant/startup.sh" >> /home/vagrant/.bash_profile'

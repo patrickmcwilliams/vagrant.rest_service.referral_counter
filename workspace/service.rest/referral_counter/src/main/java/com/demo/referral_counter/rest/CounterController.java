@@ -13,15 +13,15 @@ import com.demo.referral_counter.db.Referrer;
 
 
 @RestController
-public class Controller {
+public class CounterController {
 	
 	@Autowired
-	private Service service;
+	private CounterService service;
 	
-    public Controller(){}
+    public CounterController(){}
     
     @RequestMapping(value="/counter/set")
-    public Service counterSet(@RequestParam(value="url", defaultValue="none") String url,
+    public CounterService counterSet(@RequestParam(value="url", defaultValue="none") String url,
     						@RequestParam(value="clientid", defaultValue="0") String clientId) {
     	service.recordURL(url, clientId);
         return service;
