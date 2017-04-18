@@ -39,12 +39,14 @@ public class CounterService {
 		this.url = url;
 		status = "success";
 		try{
+			String domain = url.replaceAll("^(?:[^/]*//|//)?", "");
+			domain = domain.split("/")[0];
 		    Pattern pattern = Pattern.compile("([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}$");
-		    if ( !pattern.matcher(url).matches() ){
-		    	this.status = "fail: URL does not match a pattern for domain";
+		    if ( !pattern.matcher(domain).matches() ){
+		    	this.status = "fail: domain does not match a pattern for domain";
 		    }
 		    else{
-				Referrer referrer = new Referrer(url, clientId);
+				Referrer referrer = new Referrer(domain, clientId);
 				db.save(referrer);
 		    }
 		}
@@ -61,7 +63,7 @@ public class CounterService {
 		String url = data.get("url");
 		
 		String queryType = data.get("queryType");
-		if ( queryType != null && queryType.equals("topThree") ){
+		if ( queryType != null && queryType.equals("topthree") ){
 			Aggregation agg = newAggregation(
 					group("url").count().as("total"),
 					project("total").and("url").previousOperation(),

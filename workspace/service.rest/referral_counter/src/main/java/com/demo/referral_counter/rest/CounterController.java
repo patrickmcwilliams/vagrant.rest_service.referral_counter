@@ -39,8 +39,8 @@ public class CounterController {
     			return service.listRecords(data);
     		case "count":
     			return service.countRecords(data);
-    		case "topThree":
-    			data.put("queryType", "topThree");
+    		case "topthree":
+    			data.put("queryType", "topthree");
     			return service.listRecords(data);	
     	}
 
