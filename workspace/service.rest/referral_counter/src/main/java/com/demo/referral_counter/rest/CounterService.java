@@ -43,8 +43,10 @@ public class CounterService {
 		    if ( !pattern.matcher(url).matches() ){
 		    	this.status = "fail: URL does not match a pattern for domain";
 		    }
-			Referrer referrer = new Referrer(url, clientId);
-			db.save(referrer);
+		    else{
+				Referrer referrer = new Referrer(url, clientId);
+				db.save(referrer);
+		    }
 		}
 		catch(Exception e){
 			this.status = "fail: Unknown";
