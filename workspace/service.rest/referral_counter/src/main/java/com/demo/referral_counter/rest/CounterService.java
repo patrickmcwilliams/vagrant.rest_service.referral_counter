@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -30,18 +31,23 @@ public class CounterService {
 	
 	private String url;
 	private String clientId;
-	private String status = "success";
+	private String status;
 	
 	
 	public void recordURL(String url, String clientId){
 		this.clientId = clientId;
 		this.url = url;
+		status = "success";
 		try{
+		    Pattern pattern = Pattern.compile("([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}$");
+		    if ( !pattern.matcher(url).matches() ){
+		    	this.status = "fail: URL does not match a pattern for domain";
+		    }
 			Referrer referrer = new Referrer(url, clientId);
 			db.save(referrer);
 		}
 		catch(Exception e){
-			this.status = "fail";
+			this.status = "fail: Unknown";
 		}
 	}
 	
